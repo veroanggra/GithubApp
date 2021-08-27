@@ -1,6 +1,8 @@
 package com.veronica.idn.githubapp
 
 import android.content.Context
+import android.widget.Toast
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.loopj.android.http.AsyncHttpClient
@@ -8,6 +10,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
 import org.json.JSONArray
 import org.json.JSONObject
+import java.lang.Exception
 
 class MainViewModel : ViewModel() {
     val listUser = MutableLiveData<ArrayList<Users>>()
@@ -37,19 +40,42 @@ class MainViewModel : ViewModel() {
                         "" -> JSONArray(result)
                         else -> JSONObject(result).getJSONArray("items")
                     }
+                    for (i in 0 until jsonArray.length()) {
+                        val jsonObject = jsonArray.getJSONObject(i)
+
+                        val user = Users()
+                        user.name = jsonObject.getString("login")
+                        user.username = jsonObject.getString("login")
+                        user.avatar = jsonObject.getString("avatar_url")
+
+                        users.add(user)
+                    }
+                    listUser.postValue(users)
+                } catch (e: Exception) {
+                    Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
+                    e.printStackTrace()
                 }
             }
 
             override fun onFailure(
                 statusCode: Int,
-                headers: Array<out Header>?,
-                responseBody: ByteArray?,
-                error: Throwable?
+                headers: Array<out Header>,
+                responseBody: ByteArray,
+                error: Throwable
             ) {
-                TODO("Not yet implemented")
+                val errorMessage = when (statusCode) {
+                    401 -> "$statusCode : Bad Request"
+                    403 -> "$statusCode : Forbidden"
+                    404 -> "$statusCode : Not Found"
+                    else -> "$statusCode : ${error.message}"
+                }
+                Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
             }
-
         })
-
     }
+
+    fun getListUser(): LiveData<ArrayList<Users>> {
+        return listUser
+    }
+
 }
