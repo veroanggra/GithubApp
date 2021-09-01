@@ -3,4 +3,6 @@
     <string name="search">Search</string>
     <string name="change_language">Change Language</string>
     <string name="username">veroanggra</string>
+    <string name="name">Name</string>
+    <string name="text_location">Location</string>
 </resources>
