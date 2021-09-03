@@ -1,4 +1,4 @@
-package com.veronica.idn.githubapp
+package com.veronica.idn.githubapp.activity
 
 import android.app.SearchManager
 import android.content.Context
@@ -8,10 +8,13 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.veronica.idn.githubapp.R
+import com.veronica.idn.githubapp.adapter.UserAdapter
+import com.veronica.idn.githubapp.model.Users
 import com.veronica.idn.githubapp.databinding.ActivityMainBinding
+import com.veronica.idn.githubapp.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
 

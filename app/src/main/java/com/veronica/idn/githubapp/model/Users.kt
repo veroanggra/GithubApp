@@ -1,4 +1,4 @@
-package com.veronica.idn.githubapp
+package com.veronica.idn.githubapp.model
 
 data class Users(
     var username : String? = null,

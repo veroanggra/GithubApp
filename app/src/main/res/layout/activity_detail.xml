@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailActivity">
+    tools:context=".activity.DetailActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -44,6 +44,31 @@
             android:layout_centerHorizontal="true"
             android:text="@string/text_location"
             android:textSize="@dimen/_14sp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_detail"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_80dp"
+            android:layout_below="@id/tv_location_detail"
+            android:layout_marginStart="@dimen/_16dp"
+            android:layout_marginTop="@dimen/_16dp"
+            android:layout_marginEnd="@dimen/_16dp"
+            app:cardCornerRadius="@dimen/_6dp"
+            app:cardElevation="@dimen/_4dp">
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tl_detail"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_80"
+                android:layout_gravity="center" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp_detail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/cv_detail" />
+
     </RelativeLayout>
 
 </ScrollView>

@@ -1,4 +1,4 @@
-package com.veronica.idn.githubapp
+package com.veronica.idn.githubapp.viewmodel
 
 import android.content.Context
 import android.widget.Toast
@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
+import com.veronica.idn.githubapp.model.Users
 import cz.msebera.android.httpclient.Header
 import org.json.JSONArray
 import org.json.JSONObject
