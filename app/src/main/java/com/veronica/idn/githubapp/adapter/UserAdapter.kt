@@ -1,5 +1,6 @@
 package com.veronica.idn.githubapp.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.veronica.idn.githubapp.R
+import com.veronica.idn.githubapp.activity.DetailActivity
 import com.veronica.idn.githubapp.databinding.ItemUserBinding
 import com.veronica.idn.githubapp.model.Users
 
@@ -32,6 +34,12 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
                 .into(itemUserBinding.ivItemUser)
 
             itemUserBinding.tvItemUsername.text = users.username
+
+            itemView.setOnClickListener{
+                val intent = Intent(itemView.context, DetailActivity::class.java)
+                intent.putExtra(DetailActivity.EXTRA_USERNAME, users.username)
+                itemView.context.startActivity(intent)
+            }
         }
     }
 

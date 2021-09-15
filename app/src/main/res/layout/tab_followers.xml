@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/CardContainer">
+    
+    <TextView
+        style="@style/CardTitle"
+        android:text="@string/followers"/>
+    <TextView
+        android:id="@+id/tvFollowersDetail"
+        style="@style/CardValue"
+        android:text="@string/_100"/>
+</LinearLayout>
